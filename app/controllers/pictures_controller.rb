@@ -14,7 +14,7 @@ class PicturesController < ApplicationController
     @photo_count = Photo.count
 
     render("pic_templates/create_row.html.erb")
-  end
+    end
     
   def index
     @photos = Photo.all.order('created_at DESC')
