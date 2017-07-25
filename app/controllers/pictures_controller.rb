@@ -17,6 +17,8 @@ class PicturesController < ApplicationController
   end
     
   def index
+    @photos = Photo.all
+
     render("pic_templates/index.html.erb")
   end 
 
@@ -41,6 +43,11 @@ class PicturesController < ApplicationController
   end 
   
   def destroy_row
+    photo = Photo.find_by({ :Id => params["toast_id"] })
+    photo.destroy
+    
+    @photo_count = Photo.count
+    
     render("pic_templates/destroy_row.html.erb")
   end 
 
