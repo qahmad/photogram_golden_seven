@@ -17,7 +17,7 @@ class PicturesController < ApplicationController
   end
     
   def index
-    @photos = Photo.all
+    @photos = Photo.all.order('created_at DESC')
 
     render("pic_templates/index.html.erb")
   end 
