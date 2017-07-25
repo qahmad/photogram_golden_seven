@@ -21,14 +21,22 @@ class PicturesController < ApplicationController
   end 
 
   def show
+    @photo = Photo.find_by({ :Id => params["an_id"] })
     render("pic_templates/show.html.erb")
   end
   
   def edit_form
+    @photo = Photo.find_by({ :Id => params["some_id"] })
     render("pic_templates/edit_form.html.erb")
   end
   
   def update_row
+    photo = Photo.find_by({ :Id => params["the_id"] })
+    
+    photo.source = params["the_source"]
+    photo.caption = params["the_caption"]
+    photo.save
+    
     render("pic_templates/update_row.html.erb")
   end 
   
