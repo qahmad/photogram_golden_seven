@@ -13,8 +13,10 @@ class PicturesController < ApplicationController
   
     @photo_count = Photo.count
 
-    render("pic_templates/create_row.html.erb")
-    end
+    redirect_to("/photos")
+    # render("pic_templates/create_row.html.erb")
+  
+  end
     
   def index
     @photos = Photo.all.order('created_at DESC')
@@ -39,7 +41,8 @@ class PicturesController < ApplicationController
     photo.caption = params["the_caption"]
     photo.save
     
-    render("pic_templates/update_row.html.erb")
+    # render("pic_templates/update_row.html.erb")
+    redirect_to("/photos/" + photo.id.to_s)
   end 
   
   def destroy_row
@@ -48,7 +51,8 @@ class PicturesController < ApplicationController
     
     @photo_count = Photo.count
     
-    render("pic_templates/destroy_row.html.erb")
+    # render("pic_templates/destroy_row.html.erb")
+    redirect_to("/photos")
   end 
 
 end
